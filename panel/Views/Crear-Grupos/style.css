@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+header, footer {
+    width: 100%;
+}
+.container {
+    max-width: 1200px;
+    margin: 50px auto 50px auto; /* espacio para header y footer */
+    padding: 20px;
+}
+main {
+  background: #f4f6f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 90vh;
+  padding: 30px;
+  padding-top: 90px; /* espacio para que no quede tapado por el header */
+}
+
+/* Contenedor principal */
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.6s ease;
+}
+
+/* Títulos */
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.container h2 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  color: #34495e;
+}
+
+/* Formulario */
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+form select,
+form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+form select:focus,
+form input:focus {
+  outline: none;
+  border: 1px solid #2980b9;
+  box-shadow: 0 0 6px rgba(41, 128, 185, 0.4);
+}
+
+/* Botón */
+form button {
+  background: #2980b9;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+form button:hover {
+  background: #1f6391;
+}
+
+/* Lista de grupos */
+#listaGrupos {
+  list-style: none;
+  padding: 0;
+}
+
+#listaGrupos li {
+  background: #ecf0f1;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#listaGrupos li:hover {
+  background: #d6eaf8;
+  transform: translateX(5px);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

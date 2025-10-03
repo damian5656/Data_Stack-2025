@@ -1,0 +1,73 @@
+/* style.css */
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 80px auto 100px auto; /* espacio para header y footer */
+    padding: 20px;
+}
+
+/* Título y párrafo principal */
+.container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.container p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Dashboard - secciones */
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjetas del dashboard */
+.dashboard-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+    text-align: center;
+}
+
+.dashboard-card:hover {
+    background-color: #2980b9;
+    transform: translateY(-5px);
+}
+
+/* Header y footer se adaptan si ya están en línea */
+header, footer {
+    width: 100%;
+}
+
+/* Para que no se superponga el footer si se hace scroll */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
