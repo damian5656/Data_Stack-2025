@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2025 a las 23:28:41
+-- Tiempo de generación: 30-09-2025 a las 18:25:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -56,9 +56,26 @@ CREATE TABLE `alumno` (
 
 CREATE TABLE `asignatura` (
   `ID_Asignatura` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL,
-  `Año` int(11) NOT NULL
+  `Nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `asignatura`
+--
+
+INSERT INTO `asignatura` (`ID_Asignatura`, `Nombre`) VALUES
+(1, 'Mat. CTS'),
+(2, 'Sociología'),
+(3, 'Ingeniería'),
+(4, 'Inglés'),
+(5, 'Ciberseguridad'),
+(6, 'Sistemas Operativos'),
+(7, 'Programación'),
+(8, 'Cálculo'),
+(9, 'Filosofía'),
+(10, 'Física'),
+(11, 'Emprendurismo y Gestión'),
+(12, 'Proyecto');
 
 -- --------------------------------------------------------
 
@@ -89,6 +106,14 @@ CREATE TABLE `curso` (
   `Nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `curso`
+--
+
+INSERT INTO `curso` (`ID_Curso`, `Nombre`) VALUES
+(1, 'Bachillerato Informática'),
+(2, 'Bachillerato Robótica');
+
 -- --------------------------------------------------------
 
 --
@@ -99,6 +124,24 @@ CREATE TABLE `curso_tiene_asignaturas` (
   `ID_Asignatura` int(11) NOT NULL,
   `ID_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `curso_tiene_asignaturas`
+--
+
+INSERT INTO `curso_tiene_asignaturas` (`ID_Asignatura`, `ID_Curso`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1);
 
 -- --------------------------------------------------------
 
@@ -113,6 +156,13 @@ CREATE TABLE `docente` (
   `Fecha_Ingreso` date DEFAULT NULL,
   `ID_Grupo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `docente`
+--
+
+INSERT INTO `docente` (`ID_Docente`, `ID_Usuario`, `ID_Asignatura`, `Fecha_Ingreso`, `ID_Grupo`) VALUES
+(1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,6 +204,14 @@ CREATE TABLE `grupo` (
   `ID_Horario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `grupo`
+--
+
+INSERT INTO `grupo` (`ID_Grupo`, `Nombre`, `ID_Curso`, `ID_Horario`) VALUES
+(5, '3°BC', 1, NULL),
+(6, '3°MA', 2, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -178,10 +236,85 @@ CREATE TABLE `historial_de_limpieza` (
 
 CREATE TABLE `horario` (
   `ID_Horario` int(11) NOT NULL,
-  `Dia_Semana` varchar(20) NOT NULL,
-  `Hora_Inicio` time NOT NULL,
-  `Hora_Fin` time NOT NULL
+  `ID_Dia` int(11) NOT NULL,
+  `ID_Hora` int(11) NOT NULL,
+  `ID_Asignatura` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horario`
+--
+
+INSERT INTO `horario` (`ID_Horario`, `ID_Dia`, `ID_Hora`, `ID_Asignatura`) VALUES
+(4, 1, 2, 8),
+(4, 3, 4, 8),
+(4, 5, 9, 8),
+(5, 1, 2, 8),
+(5, 1, 7, 8),
+(5, 3, 4, 8),
+(5, 3, 7, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horarios`
+--
+
+CREATE TABLE `horarios` (
+  `ID_Horario` int(11) NOT NULL,
+  `Nombre` varchar(100) NOT NULL,
+  `Fecha_Creacion` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horarios`
+--
+
+INSERT INTO `horarios` (`ID_Horario`, `Nombre`, `Fecha_Creacion`) VALUES
+(1, 'Horario inicial', '2025-09-03 19:56:28'),
+(2, 'Nuevo Horario', '2025-09-03 19:59:39'),
+(3, 'Nuevo Horario', '2025-09-03 20:01:10'),
+(4, 'Nuevo Horario', '2025-09-03 20:14:31'),
+(5, 'Nuevo Horario', '2025-09-08 18:14:08');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horario_backup`
+--
+
+CREATE TABLE `horario_backup` (
+  `ID_Horario` int(11) NOT NULL,
+  `ID_Hora` int(11) DEFAULT NULL,
+  `ID_Asignatura` int(11) DEFAULT NULL,
+  `ID_Dia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horas`
+--
+
+CREATE TABLE `horas` (
+  `ID_Hora` int(11) NOT NULL,
+  `Nombre` varchar(50) DEFAULT NULL,
+  `Duracion` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horas`
+--
+
+INSERT INTO `horas` (`ID_Hora`, `Nombre`, `Duracion`) VALUES
+(2, '1ª Hora', 45),
+(3, '2ª Hora', 45),
+(4, '3ª Hora', 45),
+(5, '4ª Hora', 45),
+(6, '5ª Hora', 45),
+(7, '6ª Hora', 45),
+(8, '7ª Hora', 45),
+(9, '8ª Hora', 45);
 
 -- --------------------------------------------------------
 
@@ -264,7 +397,30 @@ INSERT INTO `rol` (`ID_Rol`, `Nombre_Rol`, `ID_Tipo_Rol`) VALUES
 (2, 'Profesor', 2),
 (3, 'Estudiante', 2),
 (4, 'Adscripto', 3),
-(5, 'Auxiliar', 3);
+(5, 'Auxiliar', 3),
+(8, 'Invitado', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `semana`
+--
+
+CREATE TABLE `semana` (
+  `ID_Dia` int(11) NOT NULL,
+  `Nombre` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `semana`
+--
+
+INSERT INTO `semana` (`ID_Dia`, `Nombre`) VALUES
+(1, 'Lunes'),
+(2, 'Martes'),
+(3, 'Miércoles'),
+(4, 'Jueves'),
+(5, 'Viernes');
 
 -- --------------------------------------------------------
 
@@ -440,7 +596,27 @@ ALTER TABLE `historial_de_limpieza`
 -- Indices de la tabla `horario`
 --
 ALTER TABLE `horario`
+  ADD PRIMARY KEY (`ID_Horario`,`ID_Dia`,`ID_Hora`);
+
+--
+-- Indices de la tabla `horarios`
+--
+ALTER TABLE `horarios`
   ADD PRIMARY KEY (`ID_Horario`);
+
+--
+-- Indices de la tabla `horario_backup`
+--
+ALTER TABLE `horario_backup`
+  ADD PRIMARY KEY (`ID_Horario`),
+  ADD KEY `fk_horario_horas` (`ID_Hora`),
+  ADD KEY `fk_dia` (`ID_Dia`);
+
+--
+-- Indices de la tabla `horas`
+--
+ALTER TABLE `horas`
+  ADD PRIMARY KEY (`ID_Hora`);
 
 --
 -- Indices de la tabla `permisos`
@@ -479,6 +655,12 @@ ALTER TABLE `reserva`
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`ID_Rol`),
   ADD KEY `ID_Tipo_Rol` (`ID_Tipo_Rol`);
+
+--
+-- Indices de la tabla `semana`
+--
+ALTER TABLE `semana`
+  ADD PRIMARY KEY (`ID_Dia`);
 
 --
 -- Indices de la tabla `tipo_de_limpieza`
@@ -537,7 +719,7 @@ ALTER TABLE `alumno`
 -- AUTO_INCREMENT de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  MODIFY `ID_Asignatura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Asignatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `codigos_admin`
@@ -549,13 +731,13 @@ ALTER TABLE `codigos_admin`
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `ID_Curso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `ID_Docente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `espacio`
@@ -567,7 +749,7 @@ ALTER TABLE `espacio`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `ID_Grupo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_de_limpieza`
@@ -576,10 +758,22 @@ ALTER TABLE `historial_de_limpieza`
   MODIFY `ID_Historial_Limpieza` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `horario`
+-- AUTO_INCREMENT de la tabla `horarios`
 --
-ALTER TABLE `horario`
-  MODIFY `ID_Horario` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `horarios`
+  MODIFY `ID_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `horario_backup`
+--
+ALTER TABLE `horario_backup`
+  MODIFY `ID_Horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `horas`
+--
+ALTER TABLE `horas`
+  MODIFY `ID_Hora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -609,7 +803,7 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `ID_Rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_de_limpieza`
@@ -682,7 +876,7 @@ ALTER TABLE `espacio`
 -- Filtros para la tabla `evento`
 --
 ALTER TABLE `evento`
-  ADD CONSTRAINT `evento_ibfk_1` FOREIGN KEY (`ID_Horario`) REFERENCES `horario` (`ID_Horario`),
+  ADD CONSTRAINT `evento_ibfk_1` FOREIGN KEY (`ID_Horario`) REFERENCES `horario_backup` (`ID_Horario`),
   ADD CONSTRAINT `evento_ibfk_2` FOREIGN KEY (`ID_Reserva`) REFERENCES `reserva` (`ID_Reserva`);
 
 --
@@ -690,7 +884,7 @@ ALTER TABLE `evento`
 --
 ALTER TABLE `grupo`
   ADD CONSTRAINT `grupo_ibfk_1` FOREIGN KEY (`ID_Curso`) REFERENCES `curso` (`ID_Curso`),
-  ADD CONSTRAINT `grupo_ibfk_2` FOREIGN KEY (`ID_Horario`) REFERENCES `horario` (`ID_Horario`);
+  ADD CONSTRAINT `grupo_ibfk_2` FOREIGN KEY (`ID_Horario`) REFERENCES `horario_backup` (`ID_Horario`);
 
 --
 -- Filtros para la tabla `historial_de_limpieza`
@@ -698,6 +892,20 @@ ALTER TABLE `grupo`
 ALTER TABLE `historial_de_limpieza`
   ADD CONSTRAINT `historial_de_limpieza_ibfk_1` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuario` (`ID_Usuario`),
   ADD CONSTRAINT `historial_de_limpieza_ibfk_2` FOREIGN KEY (`ID_Tipo_Limpieza`) REFERENCES `tipo_de_limpieza` (`ID_Tipo_Limpieza`);
+
+--
+-- Filtros para la tabla `horario`
+--
+ALTER TABLE `horario`
+  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`ID_Horario`) REFERENCES `horarios` (`ID_Horario`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `horario_backup`
+--
+ALTER TABLE `horario_backup`
+  ADD CONSTRAINT `fk_dia` FOREIGN KEY (`ID_Dia`) REFERENCES `semana` (`ID_Dia`),
+  ADD CONSTRAINT `fk_horario` FOREIGN KEY (`ID_Horario`) REFERENCES `horarios` (`ID_Horario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_horario_horas` FOREIGN KEY (`ID_Hora`) REFERENCES `horas` (`ID_Hora`);
 
 --
 -- Filtros para la tabla `permisos`
