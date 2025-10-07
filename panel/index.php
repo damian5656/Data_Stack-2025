@@ -28,7 +28,7 @@ include("../conexion.php");
             <div class="dashboard-sections">
                 <a href=".php" class="dashboard-card">Cursos</a>
                 <a href="views/Crear-Grupos/grupos.php" class="dashboard-card">Grupos</a>
-                <a href="pedidos.php" class="dashboard-card">Usuarios</a>
+                <a href="Crear-Usuarios.php" class="dashboard-card">Usuarios</a>
                 <a href="pedidos.php" class="dashboard-card">Recursos</a>
             </div>
         </div>
