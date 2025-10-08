@@ -26,10 +26,10 @@ include("../conexion.php");
 
             <!-- Ejemplo de sección de administración -->
             <div class="dashboard-sections">
-                <a href=".php" class="dashboard-card">Cursos</a>
+                <a href="crear-Cursos.php" class="dashboard-card">Cursos</a>
                 <a href="views/Crear-Grupos/grupos.php" class="dashboard-card">Grupos</a>
                 <a href="Crear-Usuarios.php" class="dashboard-card">Usuarios</a>
-                <a href="pedidos.php" class="dashboard-card">Recursos</a>
+                <a href="views/aulas/aulas.php" class="dashboard-card">aulas</a>
             </div>
         </div>
     </main>

@@ -19,9 +19,9 @@ $nombre = $_SESSION['nombre'] ?? 'Administrador';
     <title>Crear Usuarios - Panel Admin</title>
     <style>
         :root{--bg:#f7f7fb; --card:#fff; --text:#12141a; --muted:#60646c;--brand:#4f46e5; --brand-2:#4338ca; --line:#e5e7eb; --radius:16px;}
-        *{box-sizing:border-box}
+        *{box-sizing:border-box;margin:10;padding: 0;}
         body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto}
-        .container{max-width:800px;margin:0 auto;padding:28px 16px}
+        .container{max-width:800px;margin:0px auto;padding: 100px 16px 28px;}
         .card-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:20px}
         @media (min-width: 600px) {.card-grid{grid-template-columns:1fr 1fr;}}
         .choice-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,.05);transition:transform .3s, box-shadow .3s;}
@@ -34,12 +34,14 @@ $nombre = $_SESSION['nombre'] ?? 'Administrador';
         h1{text-align:center;color:var(--text);margin-bottom:10px;}
         .subtitle{text-align:center;color:var(--muted);margin-top:0;font-size:16px;}
         .back-link{display:block;margin-bottom:20px;text-align:center;color:var(--brand);text-decoration:none;font-weight:500;}
-    </style>
+       header{width: 100%;}
+   </style>
 </head>
+ <?php include("Views/header.php")?>
 <body>
+   
     <div class="container">
-        <a href="/Data_Stack-2025/panel/index.php" class="back-link">← Volver al Panel Admin</a>
-        
+       
         <h1>Seleccionar Tipo de Usuario a Crear</h1>
         <p class="subtitle">Elige el rol del nuevo usuario para continuar con el registro.</p>
 
@@ -49,16 +51,16 @@ $nombre = $_SESSION['nombre'] ?? 'Administrador';
             <div class="choice-card">
                 <div class="icon">👑</div>
                 <h3>Administrador</h3>
-                <p>Usuarios con acceso total a la configuración del sistema, horarios y gestión de otros usuarios. (Rol ID: 1)</p>
+                <p>Usuarios con acceso total a la configuración del sistema, horarios y gestión de otros usuarios. </p>
                 <!-- Aquí se enlazaría al formulario de creación con el rol preseleccionado (Ejemplo: rol=1) -->
-                <a href="crear-Administrador" class="btn-select">Crear Admin</a>
+                <a href="Crear-Usuarios/crear-Administrador.php" class="btn-select">Crear Admin</a>
             </div>
 
             <!-- Bloque 2: Docente -->
             <div class="choice-card">
                 <div class="icon">🧑‍🏫</div>
                 <h3>Docente</h3>
-                <p>Usuarios con permisos limitados a la visualización y edición de sus propios recursos y horarios. (Rol ID: 2)</p>
+                <p>Usuarios con permisos limitados a la visualización y edición de sus propios recursos y horarios.</p>
                 <!-- Aquí se enlazaría al formulario de creación con el rol preseleccionado (Ejemplo: rol=2) -->
                 <a href="Crear-Usuarios/crear-Docente.php" class="btn-select">Crear Docente</a>
             </div>

@@ -20,10 +20,8 @@ if (session_status() == PHP_SESSION_NONE) {
         <nav>
             <ul>
                 <li><a href="http://localhost/Data_Stack-2025/panel/index.php">Inicio</a></li>
-                <li><a href="usuarios.php">Usuarios</a></li>
-                <li><a href="views/Crear-Grupos/grupos.php">Grupos</a></li>
-                <li><a href="Crear-Grupos/grupos.php">Cursos</a></li>
-                <li><a href="../bienvenido.php">Volver pagina Principal</a></li>
+                
+                <li><a href="http://localhost/Data_Stack-2025/bienvenido.php">Volver pagina Principal</a></li>
             </ul>
         </nav>
     </div>

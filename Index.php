@@ -152,7 +152,6 @@
       <ul>
         <li><a href="IniciarSesion/invitado.php">Entrar</a></li>
         <li><a href="IniciarSesion/iniciarsesion.php">Iniciar Sesión</a></li>
-        <li><a href="Crear-Admin/login.php">Crear Administrador</a></li>
       </ul>
     </nav>
   </header>
@@ -163,7 +162,6 @@
     <p>
       Este sitio web tiene como objetivo ayudar a administrar la Institución ITSP de manera más rápida y segura, evitando errores y redundancias. 
       Si eres un alumno o visitante, toca "Entrar". Si eres profesor o administrador, haz clic en "Iniciar Sesión". 
-      Para registrarte como administrador, toca "Crear Administrador" y solicita el código al dueño del sitio.
     </p>
     
    
